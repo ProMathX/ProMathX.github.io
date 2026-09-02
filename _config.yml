@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Controlling complexity is the essence of computer programming.
+title: The world of the electron and the switch, the beauty of the baud
 email: kernkraftdev@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   everything around cs
