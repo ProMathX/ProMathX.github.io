@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Future Development of LLMs
+author: Kernkraftwerk
 date: 2026-09-11
 ---
 <br>
