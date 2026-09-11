@@ -27,3 +27,8 @@ Better yet, the development of their technology is stagnating. Why? Because AI i
 
 After the bubble bursts, we will use AI only in specialized environments developed by the winners of the AI race — companies like Anthropic, etc. General-purpose AI, trained on the trash of the internet, will then finally die.
  
+
+
+Edit:
+I have read [Terence Tao's article on this issue](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/). And reading his [Mastadon](https://mastodon.social/@tao@mathstodon.xyz/117207850722131353), I can only agree on his views.
+>[!Quote]Prematurely solving the problem by purely AI-powered methods - particularly without full transparency into the solution process - can contaminate this process to the point where it actually becomes a net negative for the progress of mathematics as a whole.
