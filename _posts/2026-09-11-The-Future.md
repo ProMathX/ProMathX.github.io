@@ -31,4 +31,4 @@ After the bubble bursts, we will use AI only in specialized environments develop
 
 Edit:
 I have read [Terence Tao's article on this issue](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/). And reading his [Mastadon](https://mastodon.social/@tao@mathstodon.xyz/117207850722131353), I can only agree on his views.
->[!Quote]Prematurely solving the problem by purely AI-powered methods - particularly without full transparency into the solution process - can contaminate this process to the point where it actually becomes a net negative for the progress of mathematics as a whole.
+>Prematurely solving the problem by purely AI-powered methods - particularly without full transparency into the solution process - can contaminate this process to the point where it actually becomes a net negative for the progress of mathematics as a whole.
