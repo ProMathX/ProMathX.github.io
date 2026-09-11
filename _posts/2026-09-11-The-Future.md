@@ -20,9 +20,9 @@ And on the social media platform that represents one of the seven deadly sins �
 
 We are currently in the second dot-com bubble, which is about to burst (I'll come back to that later). Back in the 1990s, up until the mid-2000s, there was the so-called dot-com era, where Yahoo, Google, and many other companies tried to dominate the internet by becoming *the* search engine of the web. We can currently see that this development is repeating itself, but with a different technology — to be precise, with LLMs, or the general development of neural networks.
 
-In the domination of the LLM sector — to recall it again — Google, Anthropic, OpenAI, Microsoft, and Perplexity are currently trying to dominate the market. One example would be the weekly benchmark tests these companies run on their models: newer models outperform older ones by only 0.25 percentage points (TODO: find source).
-
 This shows that the development of their technology is stagnating. Why? Because AI isn't scalable ([source](https://mediabiasfactcheck.com/?mbfc_source_search=1&post_type=page&s=https%3A%2F%2Fscienceblog.com%2F), [source](https://understandingyourai.org/ai-industry-connections/)).
+
+In the domination of the LLM sector — to recall it again — Google, Anthropic, OpenAI, Microsoft, and Perplexity are currently trying to dominate the market. One example would be the weekly benchmark tests these companies run on their models: newer models barely outperform their predecessors anymore — it's less a genuine leap forward and more of a corporate dick-measuring contest over who can claim the top spot on a leaderboard ([source](https://www.sapien.io/blog/when-bigger-isnt-better-the-diminishing-returns-of-scaling-ai-models)).
 
 If one of these companies quits — again, because AI isn't scalable — the bubble will burst, and we will genuinely feel the loss of money in our daily lives. It might become the new 2008.
 
