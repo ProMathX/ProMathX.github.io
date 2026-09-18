@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ProMathX – Study Spots in Vienna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      header {
+        padding: 1rem;
+        text-align: center;
+        background: #1e1e2f;
+        color: white;
+      }
+      #map {
+        height: 85vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Best Study Spots in Vienna</h1>
+    </header>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      const map = L.map('map').setView([48.2082, 16.3738], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      const places = [
+        {
+          name: 'Hauptbücherei Wien',
+          lat: 48.1929,
+          lng: 16.34,
+          description:
+            'Big central library, quiet floors, great for long sessions.',
+        },
+        {
+          name: 'Universitätsbibliothek Wien',
+          lat: 48.213,
+          lng: 16.3593,
+          description: 'Main university library, huge reading rooms.',
+        },
+      ];
+
+      places.forEach((place) => {
+        L.marker([place.lat, place.lng])
+          .addTo(map)
+          .bindPopup(`<b>${place.name}</b><br>${place.description}`);
+      });
+    </script>
+  </body>
+</html>
