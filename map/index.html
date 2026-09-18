@@ -1,39 +1,142 @@
 <!doctype html>
-<html lang="en">
+
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <title>ProMathX – Study Spots in Vienna</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
+
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
       body {
         margin: 0;
-        font-family: sans-serif;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f5f7;
       }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
       header {
-        padding: 1rem;
+        flex: 0 0 auto;
+        padding: 14px 20px;
         text-align: center;
         background: #1e1e2f;
         color: white;
+        z-index: 1000;
       }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      header p {
+        margin: 5px 0 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
       #map {
-        height: 85vh;
+        flex: 1 1 auto;
         width: 100%;
+        min-height: 0;
+      }
+
+      /* Popup styling */
+      .popup-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+
+      .popup-type {
+        display: inline-block;
+        padding: 3px 7px;
+        margin-bottom: 7px;
+        border-radius: 5px;
+        background: #eeeef5;
+        color: #333;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .popup-description {
+        margin: 4px 0;
+        line-height: 1.4;
+      }
+
+      .popup-address {
+        margin-top: 7px;
+        color: #555;
+        font-size: 12px;
+      }
+
+      /* Legend */
+      .legend {
+        background: white;
+        padding: 10px 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        line-height: 1.6;
+        font-size: 12px;
+      }
+
+      .legend-title {
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        header {
+          padding: 10px 12px;
+        }
+
+        header h1 {
+          font-size: 1.2rem;
+        }
+
+        header p {
+          font-size: 0.8rem;
+        }
+
+        .legend {
+          font-size: 11px;
+        }
       }
     </style>
   </head>
+
   <body>
     <header>
       <h1>Best Study Spots in Vienna</h1>
+      <p>ProMathX – Libraries, study spaces & TU Wien locations</p>
     </header>
 
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
+      /*
+       * Vienna map
+       */
       const map = L.map('map').setView([48.2082, 16.3738], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -42,26 +145,213 @@
         maxZoom: 19,
       }).addTo(map);
 
+      /*
+       * Study locations
+       *
+       * Coordinates are approximate building/location coordinates.
+       */
       const places = [
+        /* =========================
+         TU WIEN
+         ========================= */
+
+        {
+          name: 'TU Wien – Seminarraum 127',
+          type: 'TU Wien',
+          lat: 48.19565,
+          lng: 16.3712,
+          description: 'Seminarraum 127 (Raum CD 03 24), Campus Gußhaus.',
+          address: 'Gußhausstraße 27–29, 1040 Wien',
+        },
+
+        {
+          name: 'TU Wien – Seminarraum 384',
+          type: 'TU Wien',
+          lat: 48.19565,
+          lng: 16.3712,
+          description: 'Seminarraum 384, Raum CD 02 04.',
+          address: 'Gußhausstraße 27–29, 1040 Wien',
+        },
+
+        {
+          name: 'TU Wien – Seminarraum Argentinierstraße',
+          type: 'TU Wien',
+          lat: 48.1972,
+          lng: 16.37175,
+          description:
+            'Seminarraum im TU-Wien-Gebäude an der Argentinierstraße.',
+          address: 'Argentinierstraße 8, 1040 Wien',
+        },
+
+        {
+          name: 'TU Wien – Besprechungsraum Galerie EAZE04',
+          type: 'TU Wien',
+          lat: 48.1972,
+          lng: 16.37175,
+          description: 'Besprechungsraum Galerie EAZE04.',
+          address: 'TU Wien Campus Karlsplatz / Argentinierstraße',
+        },
+
+        /* =========================
+         UNI WIEN – STUDENT SPACES
+         ========================= */
+
+        {
+          name: 'Uni Wien – Lernraum Kolingasse',
+          type: 'Uni Wien',
+          lat: 48.21805,
+          lng: 16.3628,
+          description:
+            'Student Space mit 109 Plätzen. Mo–Fr 7:30–22 Uhr, Sa 8–19 Uhr.',
+          address: 'Kolingasse 12, 1090 Wien',
+        },
+
+        {
+          name: 'Uni Wien – Atrium Hof 7',
+          type: 'Uni Wien',
+          lat: 48.21315,
+          lng: 16.3601,
+          description: 'Student Space mit 120 Plätzen im Uni-Hauptgebäude.',
+          address: 'Uni-Hauptgebäude, Universitätsring 1, 1010 Wien',
+        },
+
+        {
+          name: 'Uni Wien – Zeitschriftensaal Teinfaltstraße',
+          type: 'Uni Wien',
+          lat: 48.21225,
+          lng: 16.3618,
+          description:
+            'Lesesaal mit 80 Plätzen, Informationsschalter und ORF-Archiv.',
+          address: 'Teinfaltstraße 8, 1010 Wien',
+        },
+
+        {
+          name: 'Uni Wien – FB Germanistik & Skandinavistik',
+          type: 'Uni Wien',
+          lat: 48.21315,
+          lng: 16.3601,
+          description:
+            'Lesesaal mit 118 Plätzen. Uni-Hauptgebäude, Stiege 7, 2. OG.',
+          address: 'Universitätsring 1, 1010 Wien',
+        },
+
+        {
+          name: 'Uni Wien – FB Geschichtswissenschaften',
+          type: 'Uni Wien',
+          lat: 48.21315,
+          lng: 16.3601,
+          description:
+            'Lesesaal mit 147 Arbeitsplätzen. Buchscanner vorhanden.',
+          address: 'Universitätsring 1, 1010 Wien',
+        },
+
+        {
+          name: 'Uni Wien – FB Ostasienwissenschaften',
+          type: 'Uni Wien',
+          lat: 48.22135,
+          lng: 16.35685,
+          description:
+            '46 Arbeitsplätze, Einzelarbeitsplatz (Quietbox), u:print und Buchscanner.',
+          address: 'Spitalgasse 2, Hof 5.3, 1090 Wien',
+        },
+
+        {
+          name: 'Uni Wien – FB Afrikawissenschaften & Orientalistik',
+          type: 'Uni Wien',
+          lat: 48.221,
+          lng: 16.3564,
+          description:
+            '81 Arbeitsplätze, Gruppenarbeitsraum, u:print und Buchscanner.',
+          address: 'Spitalgasse 2–4, Hof 4.1, 1090 Wien',
+        },
+
+        {
+          name: 'Uni Wien – FB Kunstgeschichte',
+          type: 'Uni Wien',
+          lat: 48.222,
+          lng: 16.3563,
+          description:
+            '208 Arbeitsplätze, Gruppenarbeitsraum, u:print und Buchscanner.',
+          address: 'Spitalgasse 2, Hof 9.2, 1090 Wien',
+        },
+
+        {
+          name: 'Uni Wien – FB Biologie',
+          type: 'Uni Wien',
+          lat: 48.199,
+          lng: 16.3929,
+          description:
+            '114 Arbeitsplätze, Gruppenarbeitsraum, u:print und Buchscanner.',
+          address: 'Djerassiplatz 1, 1030 Wien',
+        },
+
+        /* =========================
+         OTHER
+         ========================= */
+
         {
           name: 'Hauptbücherei Wien',
+          type: 'Bibliothek',
           lat: 48.1929,
           lng: 16.34,
-          description:
-            'Big central library, quiet floors, great for long sessions.',
-        },
-        {
-          name: 'Universitätsbibliothek Wien',
-          lat: 48.213,
-          lng: 16.3593,
-          description: 'Main university library, huge reading rooms.',
+          description: 'Große zentrale Bibliothek mit ruhigen Arbeitsplätzen.',
+          address: 'Urban-Loritz-Platz 2a, 1070 Wien',
         },
       ];
 
+      /*
+       * Marker hinzufügen
+       */
       places.forEach((place) => {
-        L.marker([place.lat, place.lng])
-          .addTo(map)
-          .bindPopup(`<b>${place.name}</b><br>${place.description}`);
+        const popup = `
+        <div class="popup-title">${place.name}</div>
+
+        <div class="popup-type">
+          ${place.type}
+        </div>
+
+        <div class="popup-description">
+          ${place.description}
+        </div>
+
+        <div class="popup-address">
+          📍 ${place.address}
+        </div>
+      `;
+
+        L.marker([place.lat, place.lng]).addTo(map).bindPopup(popup);
+      });
+
+      /*
+       * Legende
+       */
+      const legend = L.control({ position: 'bottomright' });
+
+      legend.onAdd = function () {
+        const div = L.DomUtil.create('div', 'legend');
+
+        div.innerHTML = `
+        <div class="legend-title">Study Spots</div>
+         Fach-Bibliothek<br>
+         Uni Wien<br>
+         TU Wien
+      `;
+
+        return div;
+      };
+
+      legend.addTo(map);
+
+      /*
+       * Karte automatisch so ausrichten,
+       * dass alle Orte sichtbar sind.
+       */
+      const bounds = L.latLngBounds(
+        places.map((place) => [place.lat, place.lng]),
+      );
+
+      map.fitBounds(bounds, {
+        padding: [35, 35],
       });
     </script>
   </body>
