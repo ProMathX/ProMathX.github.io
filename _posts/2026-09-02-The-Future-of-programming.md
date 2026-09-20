@@ -17,7 +17,7 @@ It all boils down to one thing: AI won't replace the programmer per se, it will 
 However, AI which is solely trained on specific data, for example, math, biology, or human medicine, is a great tool; it is a great tool for static analysis of low-level code. I repeat, it is just a *tool* and that's it.
 General-purpose LLMs are nothing more than a con trick.
 
-Like DHH said in the [Lex Fridman podcast](https://youtu.be/hO-i1l8BecM?t=94), vibe coding is nothing more than what script kiddies did before LLMs.
+Like DHH said in the [Lex Fridman podcast](https://youtu.be/hO-i1l8BecM?t=94), vibe coding is nothing more than what script kiddies did before LLMs. However I don't endorse DHH, since he is a cuck, he presents his [cucklinux.com](https://cucklinux.com) as his own creation, which is blatantly wrong, because it is a bloated version of Arch cranked up the bloat lever with AI. It is a "distro" for 14 year olds to show off and not be productive. 
 
 But what is my take on AI (LLM)?
 Genuinely, don't use it that much maybe once a week and that's it. If I use it, I mainly use it to write letters to a government agency, for example. As in programming, if I do low-level stuff [see](https://github.com/ProMathX/osue-extended), I use it for static analysis; this means, if I have faulty code, asan and valgrind behave normally, the LSP doesn't detect an error, and the manual debugging with err and the step-by-step debugging with gdb doesn't seem to resolve the issue, I use Claude and only tell it the line where it might be faulty. I read every slop response with care. Normally in such cases, it is an off-by-one error, for example, I forgot to add +1 to a buffer.
