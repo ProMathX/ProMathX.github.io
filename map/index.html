@@ -152,8 +152,8 @@
        */
       const places = [
         /* =========================
-                     TU WIEN
-                     ========================= */
+                           TU WIEN
+                           ========================= */
 
         {
           name: 'TU Wien – Seminarraum 127',
@@ -201,8 +201,8 @@
         },
 
         /* =========================
-                     UNI WIEN – STUDENT SPACES
-                     ========================= */
+                           UNI WIEN – STUDENT SPACES
+                           ========================= */
 
         {
           name: 'Uni Wien – FM',
@@ -302,9 +302,19 @@
           address: 'Djerassiplatz 1, 1030 Wien',
         },
 
+        {
+          name: 'Uni Wien – FB Theologie',
+          type: 'Uni Wien',
+          lat: 48.2108615,
+          lng: 16.3628054,
+          description:
+            'Kapazität: 80 Arbeitsplätze u:print-Gerät, Buchscanner, Gruppenarbeitsraum',
+          address: 'Schenkenstraße 8-10,1010 Wien ',
+        },
+
         /* =========================
-                     OTHER
-                     ========================= */
+                           OTHER
+                           ========================= */
 
         {
           name: 'Hauptbücherei Wien',
@@ -329,20 +339,20 @@
        */
       places.forEach((place) => {
         const popup = `
-                    <div class="popup-title">${place.name}</div>
+                          <div class="popup-title">${place.name}</div>
 
-                    <div class="popup-type">
-                      ${place.type}
-                    </div>
+                          <div class="popup-type">
+                            ${place.type}
+                          </div>
 
-                    <div class="popup-description">
-                      ${place.description}
-                    </div>
+                          <div class="popup-description">
+                            ${place.description}
+                          </div>
 
-                    <div class="popup-address">
-                      📍 ${place.address}
-                    </div>
-                  `;
+                          <div class="popup-address">
+                            📍 ${place.address}
+                          </div>
+                        `;
 
         L.marker([place.lat, place.lng]).addTo(map).bindPopup(popup);
       });
@@ -356,11 +366,11 @@
         const div = L.DomUtil.create('div', 'legend');
 
         div.innerHTML = `
-                    <div class="legend-title">Study Spots</div>
-                     Fach-Bibliothek<br>
-                     Uni Wien<br>
-                     TU Wien
-                  `;
+                          <div class="legend-title">Study Spots</div>
+                           Fach-Bibliothek<br>
+                           Uni Wien<br>
+                           TU Wien
+                        `;
 
         return div;
       };
